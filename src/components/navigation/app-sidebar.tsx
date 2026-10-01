@@ -17,14 +17,14 @@ import {
   BookmarkIcon,
   BookOpenIcon,
   BookOpenTextIcon,
-  ClockIcon,
   DownloadIcon,
-  HistoryIcon,
-  ListOrderedIcon,
-  SearchIcon,
-  StarIcon,
-  WrenchIcon,
+  FoldersIcon,
   LayoutDashboard,
+  LibraryIcon,
+  RefreshCwIcon,
+  SearchIcon,
+  SparklesIcon,
+  WrenchIcon,
 } from "lucide-react"
 const data = {
   navMain: [
@@ -33,29 +33,21 @@ const data = {
       url: "/",
       icon: <LayoutDashboard />,
       bordered: true,
-    },
-    {
-      title: "Favorites",
-      url: "#",
-      icon: <StarIcon />,
-    },
-    {
-      title: "Bookmarks",
-      url: "#",
-      icon: <BookmarkIcon />,
     }
   ],
   library: [
     {
       title: "Read Now",
-      url: "#",
+      url: "/read-now",
       icon: <BookOpenIcon />,
       defaultOpen: true,
       items: [
-        { title: "Recently Added", url: "#", icon: <ClockIcon /> },
-        { title: "Up Next", url: "#", icon: <ListOrderedIcon /> },
-        { title: "Continue Reading", url: "#", icon: <BookOpenTextIcon /> },
-        { title: "History", url: "#", icon: <HistoryIcon /> },
+        { title: "All Series", url: "/read-now/all-series", icon: <LibraryIcon /> },
+        { title: "Continue Reading", url: "/read-now/continue-reading", icon: <BookOpenTextIcon /> },
+        { title: "Newly Added Series", url: "/read-now/newly-added-series", icon: <SparklesIcon /> },
+        { title: "Recently Updated Series", url: "/read-now/recently-updated-series", icon: <RefreshCwIcon /> },
+        { title: "Collections", url: "/read-now/collections", icon: <FoldersIcon /> },
+        { title: "Bookmarks", url: "/read-now/bookmarks", icon: <BookmarkIcon /> },
       ],
     },
     { title: "Comics", url: "#" },
