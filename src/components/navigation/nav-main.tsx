@@ -7,6 +7,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
@@ -32,6 +33,10 @@ interface NavItem {
   items?: NavSubItem[]
 }
 
+function isNavigable(url: string) {
+  return url !== "#" && url !== ""
+}
+
 export function NavMain({
   label,
   items,
@@ -51,17 +56,34 @@ export function NavMain({
               className="group/collapsible"
               render={<SidebarMenuItem />}
             >
+              {isNavigable(item.url) ? (
+                <SidebarMenuButton
+                  tooltip={item.title}
+                  isActive={item.isActive}
+                  render={<Link to={item.url} />}
+                >
+                  {item.icon}
+                  <span>{item.title}</span>
+                </SidebarMenuButton>
+              ) : (
+                <CollapsibleTrigger
+                  render={
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      isActive={item.isActive}
+                    />
+                  }
+                >
+                  {item.icon}
+                  <span>{item.title}</span>
+                </CollapsibleTrigger>
+              )}
               <CollapsibleTrigger
                 render={
-                  <SidebarMenuButton
-                    tooltip={item.title}
-                    isActive={item.isActive}
-                  />
+                  <SidebarMenuAction aria-label={`Toggle ${item.title}`} />
                 }
               >
-                {item.icon}
-                <span>{item.title}</span>
-                <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90" />
+                <ChevronRightIcon className="transition-transform duration-200 group-data-open/collapsible:rotate-90" />
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>

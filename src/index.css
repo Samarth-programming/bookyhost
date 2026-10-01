@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+/* @source "./mock"; */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -115,6 +116,10 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.552 0.016 285.938);
+}
+
+@utility cols-posters {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr));
 }
 
 @layer base {
